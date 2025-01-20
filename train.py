@@ -47,8 +47,6 @@ from dataset import ControlFluxDataset
 from args import parse_args
 from utils import encode_images, log_validation, save_model_card, expand_tensor_to_dim, log_data_samples_to_wandb
 
-if is_wandb_available():
-    import wandb
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.33.0.dev0")

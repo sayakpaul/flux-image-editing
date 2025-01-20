@@ -9,6 +9,10 @@ TODO: graphic
 
 ## Setup
 
+Install the dependencies from [`requirements.txt`](./requirements.txt) and perform any other configuration that might be needed.
+
+The scripts were tested using PyTorch 2.5.1 and NVIDIA GPUs (H100).
+
 ## Training
 
 We first converted the original OmniEdit dataset into Webdataset shards using [this script](./misc/convert_to_wds.py) for efficiency. This script prepares the Webdataset shards and push them to an S3 bucket. But you can configure this as per your needs.
