@@ -1,6 +1,6 @@
 # FluxEdit
 
-This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://github.com/huggingface/diffusers/tree/main/examples/flux-control). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training. Find the fine-tuned edit model here: [`sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow`](https://huggingface.co/sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow).
+This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://github.com/huggingface/diffusers/tree/main/examples/flux-control). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training. Find the fine-tuned edit model here: [`sayakpaul/FLUX.1-dev-edit-v0`](https://huggingface.co/sayakpaul/FLUX.1-dev-edit-v0).
 
 <div align="center">
 <img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/output_slow.gif" alt="GIF"/>
@@ -74,7 +74,7 @@ from diffusers import FluxControlPipeline, FluxTransformer2DModel
 from diffusers.utils import load_image
 import torch 
 
-path = "sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow" # to change
+path = "sayakpaul/FLUX.1-dev-edit-v0" # to change
 edit_transformer = FluxTransformer2DModel.from_pretrained(path, torch_dtype=torch.bfloat16)
 pipeline = FluxControlPipeline.from_pretrained(
     "black-forest-labs/FLUX.1-dev", transformer=edit_transformer, torch_dtype=torch.bfloat16
@@ -112,7 +112,7 @@ from diffusers.utils import load_image
 from huggingface_hub import hf_hub_download
 import torch
 
-path = "omniflux-lr_1e-4-wd_1e-4-gs_15.0-cd_0.1" # to change
+path = "sayakpaul/FLUX.1-dev-edit-v0" # to change
 edit_transformer = FluxTransformer2DModel.from_pretrained(path, torch_dtype=torch.bfloat16)
 control_pipe = FluxControlPipeline.from_pretrained(
     "black-forest-labs/FLUX.1-dev", transformer=edit_transformer, torch_dtype=torch.bfloat16
