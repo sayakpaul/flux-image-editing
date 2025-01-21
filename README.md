@@ -145,7 +145,7 @@ image.save("edited_image.png")
 ```
 
 </details>
-<br><br>
+<br>
 <details>
 <summary>Comparison</summary>
 
