@@ -1,9 +1,12 @@
 # FluxEdit
 
-This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://blackforestlabs.ai/flux-1-tools/). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training. Find the fine-tuned edit model here: [`sayakpaul/FLUX.1-dev-edit-v0`](https://huggingface.co/sayakpaul/FLUX.1-dev-edit-v0).
+This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://blackforestlabs.ai/flux-1-tools/). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training. 
+
+* Fine-tuned edit model here: [`sayakpaul/FLUX.1-dev-edit-v0`](https://huggingface.co/sayakpaul/FLUX.1-dev-edit-v0)
+* Interactive to try out on Hugging Face Spaces: [`ariG23498/flux-edit`](https://huggingface.co/spaces/ariG23498/flux-edit) (thanks to `ariG23498` for this!)
 
 <div align="center">
-<img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/output_slow.gif" alt="GIF"/>
+<img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/output_slow.gif" width=600 alt="GIF"/>
 </div>
 
 >[!IMPORTANT]
