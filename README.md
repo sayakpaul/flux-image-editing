@@ -74,7 +74,7 @@ from diffusers import FluxControlPipeline, FluxTransformer2DModel
 from diffusers.utils import load_image
 import torch 
 
-path = "sayakpaul/FLUX.1-dev-edit-v0" # to change
+path = "sayakpaul/FLUX.1-dev-edit-v0"
 edit_transformer = FluxTransformer2DModel.from_pretrained(path, torch_dtype=torch.bfloat16)
 pipeline = FluxControlPipeline.from_pretrained(
     "black-forest-labs/FLUX.1-dev", transformer=edit_transformer, torch_dtype=torch.bfloat16
@@ -112,7 +112,7 @@ from diffusers.utils import load_image
 from huggingface_hub import hf_hub_download
 import torch
 
-path = "sayakpaul/FLUX.1-dev-edit-v0" # to change
+path = "sayakpaul/FLUX.1-dev-edit-v0" 
 edit_transformer = FluxTransformer2DModel.from_pretrained(path, torch_dtype=torch.bfloat16)
 control_pipe = FluxControlPipeline.from_pretrained(
     "black-forest-labs/FLUX.1-dev", transformer=edit_transformer, torch_dtype=torch.bfloat16
