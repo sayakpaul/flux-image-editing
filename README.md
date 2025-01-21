@@ -1,8 +1,10 @@
 # FluxEdit
 
-This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://github.com/huggingface/diffusers/tree/main/examples/flux-control). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training.
+This project tries to teach [Flux.1 Dev](https://huggingface.co/black-forest-labs/FLUX.1-dev) the task of image editing from language with the [Flux Control framework](https://github.com/huggingface/diffusers/tree/main/examples/flux-control). We use the high-quality [`TIGER-Lab/OmniEdit-Filtered-1.2M`](https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M/) dataset for training. Find the fine-tuned edit model here: [`sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow`](https://huggingface.co/sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow).
 
-TODO: graphic
+<div align="center">
+<img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/output_slow.gif" alt="GIF"/>
+</div>
 
 >[!IMPORTANT]
 > Since we don't have the official Flux Control training details available, this project should be considered experimental and we welcome contributions from the community to make it better 🤗
@@ -72,7 +74,7 @@ from diffusers import FluxControlPipeline, FluxTransformer2DModel
 from diffusers.utils import load_image
 import torch 
 
-path = "omniflux-lr_1e-4-wd_1e-4-gs_15.0-cd_0.1" # to change
+path = "sayakpaul/omniflux-lr_5e-5-wd_1e-6-gs_30.0-cd_0.0-scheduler_constant-simplied_flow" # to change
 edit_transformer = FluxTransformer2DModel.from_pretrained(path, torch_dtype=torch.bfloat16)
 pipeline = FluxControlPipeline.from_pretrained(
     "black-forest-labs/FLUX.1-dev", transformer=edit_transformer, torch_dtype=torch.bfloat16
@@ -100,6 +102,9 @@ image.save("edited_image.png")
 We can speed up the inference by reducing the `num_inference_steps` to produce a nice image by using turbo LoRA like [`ByteDance/Hyper-SD`](https://hf.co/ByteDance/Hyper-SD).
 
 Make sure to install `peft` before running the code below: `pip install -U peft`.
+
+<details>
+<summary>Code</summary>
 
 ```py
 from diffusers import FluxControlPipeline, FluxTransformer2DModel
@@ -136,9 +141,35 @@ image = pipeline(
 image.save("edited_image.png")
 ```
 
+</details>
+<br><br>
 <details>
 <summary>Comparison</summary>
-TODO
+
+<table align="center">
+  <tr>
+    <th>50 steps</th>
+    <th>8 steps</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_car.jpg" alt="50 steps 1" width="150"></td>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_8steps_car.jpg" alt="8 steps 1" width="150"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_norte_dam.jpg" alt="50 steps 2" width="150"></td>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_8steps_norte_dam.jpg" alt="8 steps 2" width="150"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_mushroom.jpg" alt="50 steps 3" width="150"></td>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_8steps_mushroom.jpg" alt="8 steps 3" width="150"></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_green_creature.jpg" alt="50 steps 4" width="150"></td>
+    <td align="center"><img src="https://huggingface.co/datasets/sayakpaul/sample-datasets/resolve/main/flux-edit-artifacts/edited_8steps_green_creature.jpg" alt="8 steps 4" width="150"></td>
+  </tr>
+</table>
+
+
 </details>
 
 You can also choose to perform quantization if the memory requirements cannot be satisfied further w.r.t your hardware. Refer to the [Diffusers documentation](https://huggingface.co/docs/diffusers/main/en/quantization/overview) to learn more.
