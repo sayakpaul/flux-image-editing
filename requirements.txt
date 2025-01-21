@@ -1,0 +1,7 @@
+torch>=2.5.1
+torchvision
+transformers
+deepspeed
+accelerate
+webdataset
+git+https://github.com/huggingface/diffusers.git
