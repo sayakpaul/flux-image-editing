@@ -66,7 +66,7 @@ echo "END TIME: $(date)"
 
 Training starts on 8 GPUs using DeepSpeed. You can configure the [`accelerate` config file](./misc/accelerate_ds2.yaml) to change that.
 
-Refer to the [`args.py`](./args.py) to know the different kinds of configurations supported. Training was conducted on a node of 8 H100s. If you prefer using Slurm, refer to this Slurm script for scheduling training.
+Refer to the [`args.py`](./args.py) to know the different kinds of configurations supported. Training was conducted on a node of 8 H100s. If you prefer using Slurm, refer to [this Slurm](./misc/launch_edit.slurm) script for scheduling training.
 
 You can also use this [minimal version of the `train.py` script](https://github.com/huggingface/diffusers/blob/main/examples/flux-control/train_control_flux.py) with a [minimal version of the OmniEdit dataset](https://huggingface.co/datasets/sayakpaul/OmniEdit-mini) for quicker prototyping.
 
