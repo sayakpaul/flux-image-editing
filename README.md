@@ -32,7 +32,7 @@ export GUIDANCE_SCALE=30.0
 export CAPTION_DROPOUT=0.0
 export LR_SCHEDULER="constant"
 
-srun --wait=60 --kill-on-bad-exit=1 accelerate launch --config_file=./misc/accelerate_ds2.yaml train.py \
+accelerate launch --config_file=./misc/accelerate_ds2.yaml train.py \
   --pretrained_model_name_or_path="black-forest-labs/FLUX.1-dev" \
   --output_dir="omniflux-lr_${LR}-wd_${WEIGHT_DECAY}-gs_${GUIDANCE_SCALE}-cd_${CAPTION_DROPOUT}-scheduler_${LR_SCHEDULER}-sim_flow-no8bitadam" \
   --mixed_precision="bf16" \
